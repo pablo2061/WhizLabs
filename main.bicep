@@ -1,5 +1,7 @@
-param storageName string = 'stg${uniqueString(resourceGroup().id)}'
+param storagePrefix string = 'stg'
 param location string = resourceGroup().location
+
+var storageName string = '${storagePrefix}${uniqueString(resourceGroup().id)}'
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2025-06-01' = {
   name: storageName
